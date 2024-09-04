@@ -1,19 +1,19 @@
-<div class="container">
+<!--<div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-8">
       <div id="movies">
-        <% if @available_categories.any? %>
-          <% @available_categories.each do |cat| %>
-            <h4><%= cat.id %></h4>
-            <p><%= cat.name %></p>
-          <% end %>
-        <% else %>
-          <em>Aucune voiture disponible pour les dates demandés.</em>
-        <% end %>
-      </div>
+        <%# if @available_categories.any? %>-->
+          <%# @available_categories.each do |cat| %>
+<!--            <h4><%#= cat.id %></h4>
+            <p><%#= cat.name %></p>
+          <%# end %>-->
+        <%# else %>
+<!--          <em>Aucune voiture disponible pour les dates demandés.</em>-->
+        <%# end %>
+<!--      </div>
     </div>
   </div>
-</div>
+</div>-->
 
 <div class="row justify-content-center">
   <div class="col-sm-8 my-3">
@@ -31,4 +31,17 @@
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
   </div>
+</div>
+
+<div class="cards-container">
+  <% @available_categories.each do |category| %>
+    <div class="card-category">
+    <div class="card-content">
+      <h2><%= category.name %></h2>
+    </div>
+    <%= image_tag 'voiture.jpg', alt: 'Description de l\'image' %>
+    <p class="price">60€/j</p>
+  </div>
+  <% end %>
+
 </div>
