@@ -1,0 +1,42 @@
+.cards-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; /* Enable snapping */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  padding: 10px;
+  -ms-overflow-style: none;  /* Hide scrollbar on IE and Edge */
+  scrollbar-width: none;  /* Hide scrollbar on Firefox */
+}
+
+.cards-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar on WebKit browsers */
+}
+
+.card-category {
+  width: 80%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  flex: 0 0 auto; /* Prevent cards from shrinking */
+  scroll-snap-align: center; /* Snap card to center */
+  margin: 0 10px;
+}
+
+.card-category img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.price {
+  background-color: gray;
+  width: 30%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  bottom: 5%;
+  right: 10%;
+}
