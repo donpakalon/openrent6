@@ -1,6 +1,16 @@
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%=@car_category.name%></h5>
-    <a href="#" class="btn btn-primary">Je reserve</a>
+<div class="card-category">
+  <div class="card-content">
+    <h2><%= @car_category.name %></h2>
+    <h3>Automatique - Diesel</h3>
   </div>
+  <%= image_tag 'voiture.jpg', alt: 'Description de l\'image' %>
+  <p></p>
+  <p>Age du conducteur 25ans ou plus</p>
+  <p>Franchise 1500€</p>
+  <p>km supp 40ct/km</p>
+  <p>Durée: 2j 8h</p>
+  <p>Commence dans: 23h</p>
+  <p class="price"><%= CarCategory.find(session[:car_category_id]).calculate_price(session[:start_at], session[:end_at]) %></p>
+  <a href="#" class="btn btn-primary">Je reserve</a>
+  <%= link_to "je reserve", rentals_path, method: :post, data: { turbo_method: :post }  %>
 </div>

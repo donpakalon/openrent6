@@ -12,6 +12,9 @@ class CarCategoriesController < ApplicationController
       starts_at = params[:start_date]
       ends_at = params[:end_date]
 
+      session[:start_at] = starts_at
+      session[:end_at] = ends_at
+
       @available_categories = CarCategory.joins(cars: :rentals)
                                    .where.not(rentals: { starts_at: starts_at..ends_at })
                                    .where.not(rentals: { ends_at: starts_at..ends_at })
@@ -23,5 +26,6 @@ class CarCategoriesController < ApplicationController
 
   def show
     @car_category = CarCategory.find(params[:id])
+    session[:car_category_id] = @car_category.id
   end
 end

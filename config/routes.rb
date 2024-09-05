@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
 
   resources :car_categories, only: %i[index show]
-  resources :rentals, only: %i[index show]
+  resources :rentals, only: %i[index show create]
 
   # Defines the root path route ("/")
   # root "posts#index"
