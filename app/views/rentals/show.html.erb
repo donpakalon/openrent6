@@ -1,0 +1,11 @@
+<h1><%= @rental.car.car_category.name %></h1>
+
+<div class="card-category">
+  <div class="card-content">
+    <h2><%= @rental.car.car_category.name %></h2>
+  </div>
+  <%= image_tag 'voiture.jpg', alt: 'Description de l\'image' %>
+  <p class="price">60€/j</p>
+</div>
+
+<%= link_to "rental's index", rentals_path %>
