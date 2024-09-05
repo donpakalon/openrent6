@@ -18,6 +18,17 @@ car_categories = [
 
 car_category_objects = car_categories.map { |category| CarCategory.create!(category) }
 
+# Create Daily Rates
+daily_rates = [
+  { price_per_day: 30, car_category: car_category_objects[0] }, # Economy
+  { price_per_day: 150, car_category: car_category_objects[1] }, # Luxury
+  { price_per_day: 100, car_category: car_category_objects[2] }, # SUV
+  { price_per_day: 120, car_category: car_category_objects[3] }, # Convertible
+  { price_per_day: 200, car_category: car_category_objects[4] }  # Electric
+]
+
+daily_rates.map { |rate| DailyRate.create!(rate) }
+
 # Create Cars
 cars = [
   { licence_plate: 'ABC123', brand: 'Toyota', model: 'Corolla', car_category: car_category_objects[0] },
