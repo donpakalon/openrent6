@@ -59,7 +59,7 @@ user_objects = users.map { |user| User.create!(user) }
 rentals = [
   # No cars available on August 5th
   { user: user_objects[0], car: car_objects[0], car_category: car_objects[0].car_category, status: 'completed', starts_at: Date.new(2024, 8, 1), ends_at: Date.new(2024, 8, 5), price: '100' },
-  { user: user_objects[1], car: car_objects[1], car_category: car_objects[1].car_category, status: 'completed', starts_at: Date.new(2024, 8, 1), ends_at: Date.new(2024, 8, 5), price: '300' },
+  { user: user_objects[2], car: car_objects[1], car_category: car_objects[1].car_category, status: 'completed', starts_at: Date.new(2024, 8, 1), ends_at: Date.new(2024, 8, 5), price: '300' },
   { user: user_objects[2], car: car_objects[2], car_category: car_objects[2].car_category, status: 'completed', starts_at: Date.new(2024, 8, 1), ends_at: Date.new(2024, 8, 5), price: '120' },
   { user: user_objects[3], car: car_objects[3], car_category: car_objects[3].car_category, status: 'completed', starts_at: Date.new(2024, 8, 1), ends_at: Date.new(2024, 8, 5), price: '500' },
   { user: user_objects[4], car: car_objects[4], car_category: car_objects[4].car_category, status: 'completed', starts_at: Date.new(2024, 8, 1), ends_at: Date.new(2024, 8, 5), price: '200' },
@@ -73,7 +73,7 @@ rentals = [
 
   # Only cars from three categories available on August 16th
   { user: user_objects[3], car: car_objects[8], car_category: car_objects[8].car_category, status: 'completed', starts_at: Date.new(2024, 8, 16), ends_at: Date.new(2024, 8, 20), price: '150' },
-  { user: user_objects[4], car: car_objects[9], car_category: car_objects[9].car_category, status: 'completed', starts_at: Date.new(2024, 8, 16), ends_at: Date.new(2024, 8, 20), price: '500' },
+  { user: user_objects[2], car: car_objects[9], car_category: car_objects[9].car_category, status: 'completed', starts_at: Date.new(2024, 8, 16), ends_at: Date.new(2024, 8, 20), price: '500' },
 
   # Only cars from four categories available on August 21st
   { user: user_objects[0], car: car_objects[10], car_category: car_objects[10].car_category, status: 'completed', starts_at: Date.new(2024, 8, 21), ends_at: Date.new(2024, 8, 25), price: '320' },

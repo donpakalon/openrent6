@@ -23,14 +23,13 @@ class RentalsController < ApplicationController
       render :new, alert: 'There was an error creating the rental.'
     end
   end
+  
+  def index
+    ## get the rentals of the curent user
+    @rentals = current_user.rentals
+  end
 
   def show
     @rental = Rental.find(params[:id])
-  end
-
-  private
-
-  def rental_params
-    params.require(:rental).permit(:starts_at, :ends_at)
   end
 end

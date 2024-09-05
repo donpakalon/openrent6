@@ -1,6 +1,6 @@
 <!--<div class="container">
   <div class="row justify-content-center">
-    <div class="col-sm-8">
+    <div class="col-sm-8">rails
       <div id="movies">
         <%# if @available_categories.any? %>-->
           <%# @available_categories.each do |cat| %>
@@ -15,23 +15,31 @@
   </div>
 </div>-->
 
-<div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
-    <%= form_with url: car_categories_path, method: :get, class: "d-flex" do %>
-      <%= date_field_tag :start_date,
-            params[:start_date],
-            class: "form-control",
-            placeholder: "Type a keyword"
-        %>
-        <%= date_field_tag :end_date,
-            params[:end_date],
-            class: "form-control",
-            placeholder: "Type a keyword"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+  <div class="banner-img">
+    <%= image_tag "banner-img.jpg" %>
+  </div>
+  <div class="search-dates mt-5">
+    <%= form_with url: car_categories_path, method: :get do %>
+      <div class="date-inputs">
+        <%= text_field_tag :start_date,
+              params[:start_date],
+              class: "form-control",
+              placeholder: "Date de début",
+              data: { controller: "datepicker" }
+          %>
+        <%= text_field_tag :end_date,
+              params[:end_date],
+              class: "form-control",
+              placeholder: "Date de fin",
+              data: { controller: "datepicker" }
+          %>
+      </div>
+      <div class="button d-flex justify-content-center mt-3">
+        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
-</div>
+
 
 <div class="cards-container">
   <% @available_categories.each do |category| %>
@@ -45,5 +53,4 @@
       <p class="price"><%= category.calculate_price(params[:start_date], params[:end_date]) %> €</p>
     </div>
   <% end %>
-
 </div>
