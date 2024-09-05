@@ -15,33 +15,35 @@
   </div>
 </div>-->
 
-  <div class="banner-img">
-    <%= image_tag "banner-img.jpg" %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path('banner-img.jpg') %>);">
+  <div class="container">
+    <div class="banner-txt">
+      <h1><strong>Rent faster</strong> with Openrent !</h1>
+      <p>Enhanced process for users</p>
+    </div>
+    <div class="search-dates mt-3">
+      <%= form_with url: car_categories_path, method: :get do %>
+        <div class="date-inputs">
+          <%= text_field_tag :start_date,
+                params[:start_date],
+                class: "form-control",
+                placeholder: "Date de début",
+                data: { controller: "datepicker" } %>
+          <%= text_field_tag :end_date,
+                params[:end_date],
+                class: "form-control",
+                placeholder: "Date de fin",
+                data: { controller: "datepicker" } %>
+        </div>
+        <div class="button d-flex justify-content-center mt-3">
+          <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+        </div>
+       <% end %>
+    </div>
   </div>
-  <div class="search-dates mt-5">
-    <%= form_with url: car_categories_path, method: :get do %>
-      <div class="date-inputs">
-        <%= text_field_tag :start_date,
-              params[:start_date],
-              class: "form-control",
-              placeholder: "Date de début",
-              data: { controller: "datepicker" }
-          %>
-        <%= text_field_tag :end_date,
-              params[:end_date],
-              class: "form-control",
-              placeholder: "Date de fin",
-              data: { controller: "datepicker" }
-          %>
-      </div>
-      <div class="button d-flex justify-content-center mt-3">
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-      </div>
-    <% end %>
-  </div>
+</div>
 
-
-<div class="cards-container">
+<div class="cards-container mt-3">
   <% @available_categories.each do |category| %>
     <div class="card-category">
       <div class="card-content">
