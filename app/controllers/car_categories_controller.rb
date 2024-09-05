@@ -7,6 +7,7 @@ class CarCategoriesController < ApplicationController
     # @overlapping_cars = @overlapping_rentals.map(&:car).uniq
     # @available_cars = Car.all - @overlapping_cars
     # @available_categories = @available_cars.map(&:car_category).uniq
+    @rental = Rental.new
     if params[:start_date].present? && params[:end_date].present?
       starts_at = params[:start_date]
       ends_at = params[:end_date]
