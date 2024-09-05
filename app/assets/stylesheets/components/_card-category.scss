@@ -1,0 +1,42 @@
+.card-category-details {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 0 20px;
+  background-color: $light-gray;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.card-category-details img {
+  border-radius: 15px;
+}
+
+.price-details {
+  background-color: gray;
+  width: 30%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  // position: absolute;
+  // bottom: 18%;
+  // right: 10%;
+}
+
+.book-car-content {
+  display: flex;
+}
+
+.book-link {
+  background-color: $blue;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.car-infos p {
+  margin-bottom: auto;
+}
