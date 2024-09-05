@@ -36,12 +36,14 @@
 <div class="cards-container">
   <% @available_categories.each do |category| %>
     <div class="card-category">
-    <div class="card-content">
-      <h2><%= category.name %></h2>
+      <div class="card-content">
+        <h2><%= category.name %></h2>
+      </div>
+      <%= link_to car_category_path(category) do %>
+        <%= image_tag 'voiture.jpg', alt: 'Description de l\'image' %>
+      <% end %>
+      <p class="price"><%= category.calculate_price(params[:start_date], params[:end_date]) %> €</p>
     </div>
-    <%= image_tag 'voiture.jpg', alt: 'Description de l\'image' %>
-    <p class="price">60€/j</p>
-  </div>
   <% end %>
 
 </div>
