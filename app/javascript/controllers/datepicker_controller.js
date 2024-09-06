@@ -5,8 +5,9 @@ import flatpickr from "flatpickr";
 export default class extends Controller {
 
   connect() {
-    if (!this.element._flatpickr) {
-      flatpickr(this.element)
+    if (this.element._flatpickr) {
+      this.element._flatpickr.destroy();
     }
+    flatpickr(this.element);
   }
 }
