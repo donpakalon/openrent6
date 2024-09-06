@@ -50,7 +50,7 @@
         <h2><%= category.name %></h2>
       </div>
       <%= link_to car_category_path(category) do %>
-        <%= image_tag "#{category.name}", alt: 'Description de l\'image' %>
+        <%= image_tag "#{category.name}.png", alt: 'Description de l\'image' %>
       <% end %>
       <p class="price"><%= category.calculate_price(params[:start_date], params[:end_date]) %> €</p>
     </div>
