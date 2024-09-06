@@ -6,6 +6,7 @@
   background-color: $light-gray;
   padding: 20px;
   border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .card-category-details img {
@@ -19,7 +20,7 @@
   padding: 10px;
   border-radius: 10px;
   color: white;
-  font-size: 20px;
+  font-size: 30px;
   // position: absolute;
   // bottom: 18%;
   // right: 10%;
@@ -27,6 +28,7 @@
 
 .book-car-content {
   display: flex;
+  justify-content: space-between;
 }
 
 .book-link {
@@ -35,8 +37,4 @@
   color: white;
   padding: 10px 20px;
   text-align: center;
-}
-
-.car-infos p {
-  margin-bottom: auto;
 }

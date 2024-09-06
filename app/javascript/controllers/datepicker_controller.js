@@ -8,6 +8,10 @@ export default class extends Controller {
     if (this.element._flatpickr) {
       this.element._flatpickr.destroy();
     }
-    flatpickr(this.element);
+    flatpickr(this.element,
+      {
+        disableMobile: "true",
+      }
+    );
   }
 }

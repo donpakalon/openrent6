@@ -17,7 +17,7 @@
       <p >Durée: 2j 8h</p>
       <p>Commence dans: 23h</p>
     </div>
-    <p class="price-details"><%= CarCategory.find(session[:car_category_id]).calculate_price(session[:start_at], session[:end_at]) %></p>
+    <p class="price-details"><%= CarCategory.find(session[:car_category_id]).calculate_price(session[:start_at], session[:end_at]) %>€</p>
   </div>
   <%= link_to "Réserver ce véhicule", rentals_path, method: :post, class: "book-link", data: { turbo_method: :post }  %>
 </div>
