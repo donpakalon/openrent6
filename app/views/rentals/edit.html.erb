@@ -1,0 +1,45 @@
+<h1>Edit Rental</h1>
+
+<!--<div class="search-dates mt-5">-->
+  <%#= form_with url: rentals_path(@rental), method: :put do %>
+<!--    <div class="date-inputs">-->
+      <%#= text_field_tag :start_date,
+            params[:start_date],
+            class: "form-control",
+            placeholder: "Start Date",
+            data: { controller: "datepicker" }  # Ensure you have a datepicker controller setup
+        %>
+      <%#= text_field_tag :end_date,
+            params[:end_date],
+            class: "form-control",
+            placeholder: "End Date",
+            data: { controller: "datepicker" }  # Ensure you have a datepicker controller setup
+        %>
+<!--    </div>
+    <div class="button d-flex justify-content-center mt-3">
+      <%#= submit_tag "Save changes", name: nil, class: "btn btn-primary" %>-->
+<!--    </div>-->
+  <%# end %>
+<!--</div>
+-->
+
+<div class="search-dates mt-5">
+  <%= simple_form_for @rental, method: :put do |f| %>
+    <div class="date-inputs">
+      <%= f.input :starts_at,
+            value: @rental.starts_at,
+            required: false,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+
+      <%= f.input :ends_at,
+            value: @rental.ends_at,
+            required: false,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+    </div>
+    <div class="button d-flex justify-content-center mt-3">
+      <%= f.button :submit, "Save changes", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

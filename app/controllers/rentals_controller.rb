@@ -23,7 +23,7 @@ class RentalsController < ApplicationController
       render :new, alert: 'There was an error creating the rental.'
     end
   end
-  
+
   def index
     ## get the rentals of the curent user
     @rentals = current_user.rentals
@@ -31,5 +31,26 @@ class RentalsController < ApplicationController
 
   def show
     @rental = Rental.find(params[:id])
+  end
+
+  def edit
+    @rental = Rental.find(params[:id])
+  end
+
+  def update
+    @rental = Rental.find(params[:id])
+    if @rental.update(rental_params)
+      new_price = @rental.car_category.calculate_price(@rental.starts_at, @rental.ends_at)
+      @rental.update(price: new_price)
+      redirect_to @rental, notice: 'Rental was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def rental_params
+    params.require(:rental).permit(:starts_at, :ends_at)
   end
 end
