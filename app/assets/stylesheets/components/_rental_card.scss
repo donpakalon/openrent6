@@ -1,0 +1,74 @@
+.container {
+  width: 100%;
+  max-width: 428px; /* Match the card width */
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.featured-car-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+}
+
+.card-banner img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.card-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 24px;
+  margin: 0;
+}
+
+.year {
+  font-size: 16px;
+  color: #555;
+  background: #f0f0f0;
+  border-radius: 50%;
+  padding: 12px;
+  border: 3px dashed grey;
+}
+
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+
+.card-list-item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.card-item-text {
+  margin-left: 4px;
+}
+
+.card-price {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+
+.card-price-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
