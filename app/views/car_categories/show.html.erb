@@ -3,14 +3,21 @@
     <h2><%= @car_category.name %></h2>
     <h3>Automatique - Diesel</h3>
   </div>
+
   <%= image_tag 'voiture.jpg', alt: 'Description de l\'image' %>
-  <p></p>
   <p>Age du conducteur 25ans ou plus</p>
   <p>Franchise 1500€</p>
   <p>km supp 40ct/km</p>
-  <p>Durée: 2j 8h</p>
-  <p>Commence dans: 23h</p>
-  <p class="price"><%= CarCategory.find(session[:car_category_id]).calculate_price(session[:start_at], session[:end_at]) %></p>
-  <a href="#" class="btn btn-primary">Je reserve</a>
-  <%= link_to "je reserve", rentals_path, method: :post, data: { turbo_method: :post }  %>
+  <p>Durée: <span id="duration"></span></p>
+
+  <!-- Turbo Frame for dynamic price update -->
+
+  <div class="date-selectors" data-controller = "update-price" data-update-price-id-value="<%=@car_category.id%>">
+    <%= form_with url: car_category_path(@car_category), method: :get, data: { update_price_target: "form" } do %>
+      <%= date_field_tag :start_date, session[:start_at], class: "form-control", data: { update_price_target: "start", action: "change->update-price#price" } %>
+      <%= date_field_tag :end_date, session[:end_at], class: "form-control", data: { update_price_target: "end", action: "change->update-price#price" } %>
+    <% end %>
+    <%= render 'price' %>
+
+  </div>
 </div>
