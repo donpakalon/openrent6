@@ -18,7 +18,7 @@ class RentalsController < ApplicationController
     @rental.car = @car
 
     if @rental.save
-      redirect_to car_categories_path, notice: 'Rental was successfully created.'
+      redirect_to rental_path(@rental), notice: 'Rental was successfully created.'
     else
       render :new, alert: 'There was an error creating the rental.'
     end

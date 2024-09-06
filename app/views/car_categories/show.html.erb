@@ -8,7 +8,8 @@
       <%= date_field_tag :start_date, session[:start_at], class: "form-control", data: { update_price_target: "start", action: "change->update-price#price" } %>
       <%= date_field_tag :end_date, session[:end_at], class: "form-control", data: { update_price_target: "end", action: "change->update-price#price" } %>
     <% end %>
-    <%= render 'price' %>
+    <div class="d-flex justify-content-center mt-3">    <%= render 'price' %>
+</div>
 
   </div>
   <%= image_tag "#{@car_category.name}.png", alt: 'Description de l\'image' %>
@@ -25,7 +26,6 @@
       <p >Durée: 2j 8h</p>
       <p>Commence dans: 23h</p>
     </div>
-    <p class="price-details"><%= CarCategory.find(session[:car_category_id]).calculate_price(session[:start_at], session[:end_at]) %>€</p>
   </div>
   <%= link_to "Réserver ce véhicule", rentals_path, method: :post, class: "book-link", data: { turbo_method: :post }  %>
 </div>

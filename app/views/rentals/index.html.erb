@@ -1,14 +1,14 @@
 <h1>Rentals</h1>
 
 
-<div class="cards-container">
+<div class="cards-container" >
   <% @rentals.each do |rental| %>
    <%= link_to rental_path(rental) do %>
-    <div class="card-category">
+    <div class="card-category" style="width:300px;heigth:400px">
       <div class="card-content">
         <h2><%= rental.car.car_category.name %></h2>
       </div>
-    <%= image_tag 'voiture.jpg', alt: 'Description de l\'image' %>
+    <%= image_tag "#{rental.car_category.name}.png", alt: 'Description de l\'image' %>
     <p class="price">60€/j</p>
     </div>
     <% end %>
