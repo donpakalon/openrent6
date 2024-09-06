@@ -40,8 +40,6 @@ class RentalsController < ApplicationController
   def update
     @rental = Rental.find(params[:id])
     if @rental.update(rental_params)
-      new_price = @rental.car_category.calculate_price(@rental.starts_at, @rental.ends_at)
-      @rental.update(price: new_price)
       redirect_to @rental, notice: 'Rental was successfully updated.'
     else
       render :edit
