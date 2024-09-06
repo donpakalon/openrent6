@@ -1,45 +1,39 @@
-<h1><%= @rental.car.car_category.name %></h1>
-
   <div class="container">
-
+    <h1>Votre reservation</h1>
         <div class="featured-car-card">
 
-          <figure class="card-banner">
+          <div class="card-banner">
             <%= image_tag 'voiture.jpg', alt: 'Description de l\'image' %>
-          </figure>
+          </div>
 
           <div class="card-content">
 
             <div class="card-title-wrapper">
               <h3 class="h3 card-title">
-                <a href="#"><%= @rental.car.car_category.name %></a>
+                <%= @rental.car.car_category.name %>
               </h3>
 
-              <data class="year" value="2021">2021</data>
+              <div class="year" value="2021">2021</div>
             </div>
 
             <ul class="card-list">
 
               <li class="card-list-item">
-                <ion-icon name="people-outline"></ion-icon>
 
                 <span class="card-item-text">4 People</span>
               </li>
 
               <li class="card-list-item">
-                <ion-icon name="flash-outline"></ion-icon>
 
                 <span class="card-item-text">Hybrid</span>
               </li>
 
               <li class="card-list-item">
-                <ion-icon name="speedometer-outline"></ion-icon>
 
                 <span class="card-item-text">6.1km / 1-litre</span>
               </li>
 
               <li class="card-list-item">
-                <ion-icon name="hardware-chip-outline"></ion-icon>
 
                 <span class="card-item-text">Automatic</span>
               </li>
@@ -49,10 +43,10 @@
             <div class="card-price-wrapper">
 
               <p class="card-price">
-                <strong>$440</strong> / month
+                <strong><%= @rental.price %> €</strong>
               </p>
 
-              <button class="btn">Update</button>
+              <%= link_to "Update", edit_rental_path(@rental), class: "btn btn-primary" %>
 
             </div>
 
@@ -60,4 +54,6 @@
 
         </div>
 
-<%= link_to "rental's index", rentals_path %>
+<div class="d-flex justify-content-center mt-5">
+  <%= link_to "Voir mes reservations", rentals_path, class: "btn btn-primary"%>
+</div>
