@@ -17,6 +17,10 @@
         min: Time.now.strftime("%Y-%m-%dT%H:%M"),
         step: 1800,
         class: "form-control" %>
+      <%= select_tag :time_only,
+        options_for_select([ '14:30', '15:00', '15:30', '16:00', '16:30', '17:00' ], Time.now.strftime("%H:%M")),
+        class: "form-control",
+        id: "time_picker" %>
     <% end %>
     <div class="d-flex justify-content-center mt-3">
       <%= render 'price' %>
