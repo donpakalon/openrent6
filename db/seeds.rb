@@ -7,6 +7,7 @@ User.destroy_all
 Car.destroy_all
 DailyRate.destroy_all
 CarCategory.destroy_all
+RentalEvent.destroy_all
 
 car_categories = [
   { name: 'Economy' },
@@ -101,6 +102,52 @@ rentals = [
   { user: user_objects[4], car: car_objects[19], car_category: car_objects[19].car_category, status: 'completed', starts_at: Date.new(2024, 8, 26), ends_at: Date.new(2024, 8, 30), price: '780' }
 ]
 
-rentals.each { |rental| Rental.create!(rental) }
+rental_object = rentals.map { |rental| Rental.create!(rental) }
+
+# Create Rental Events
+rental_events = [
+  { event_type: 'check_in', status: 'pending', data: '"start_telematics": [
+                                                      {
+                                                          "telemetry.can.fuel.level": 60,
+                                                          "telemetry.can.vehicle.mileage": 1398,
+                                                          "id": 9281043,
+                                                          "name": "PX743LB"
+                                                      }]',
+    rental: rental_object[0] },
+  { event_type: 'check_out', status: 'completed', data: '"start_telematics": [
+                                                      {
+                                                          "telemetry.can.fuel.level": 54,
+                                                          "telemetry.can.vehicle.mileage": 1398,
+                                                          "id": 5777967,
+                                                          "name": "GX098MV"
+                                                      }],
+                                                      "end_telematics": [
+                                                      {
+                                                          "telemetry.can.fuel.level": 55,
+                                                          "telemetry.can.vehicle.mileage": 2300,
+                                                          "id": 5777967,
+                                                          "name": "GX098MV"
+                                                      }
+                                                      ]',
+    rental: rental_object[1] },
+  { event_type: 'check_out', status: 'cancelled', data: '"start_telematics": [
+                                                      {
+                                                          "telemetry.can.fuel.level": 80,
+                                                          "telemetry.can.vehicle.mileage": 2500,
+                                                          "id": 6215784,
+                                                          "name": "RT904JW"
+                                                      }],
+                                                      "end_telematics": [
+                                                      {
+                                                          "telemetry.can.fuel.level": 80,
+                                                          "telemetry.can.vehicle.mileage": 2500,
+                                                          "id": 6215784,
+                                                          "name": "RT904JW"
+                                                      }
+                                                      ]',
+    rental: rental_object[2] }
+]
+
+rental_events.map { |event| RentalEvent.create!(event) }
 
 puts "Seed data successfully loaded!"
