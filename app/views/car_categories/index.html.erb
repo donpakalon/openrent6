@@ -27,13 +27,11 @@
           <%= text_field_tag :start_date,
                 params[:start_date],
                 class: "form-control",
-                placeholder: "Date de début",
-                data: { controller: "datepicker" } %>
+                placeholder: "Date de début"%>
           <%= text_field_tag :end_date,
                 params[:end_date],
                 class: "form-control",
-                placeholder: "Date de fin",
-                data: { controller: "datepicker" } %>
+                placeholder: "Date de fin"%>
         </div>
         <div class="button d-flex justify-content-center mt-3">
           <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
