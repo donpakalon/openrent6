@@ -1,17 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
 import flatpickr from "flatpickr";
 
-// Connects to data-controller="datepicker"
 export default class extends Controller {
-
   connect() {
-    if (this.element._flatpickr) {
-      this.element._flatpickr.destroy();
-    }
-    flatpickr(this.element,
-      {
-        disableMobile: "true",
-      }
-    );
+    flatpickr(this.element, {
+      dateFormat: "d/m/Y H:i", // French date format with time
+      enableTime: true, // Allow time selection
+      time_24hr: true, // Use 24-hour format
+      minuteIncrement: 30, // Set 30-minute increments for time selection
+      minDate: "today", // Prevent selecting past dates
+    });
   }
 }
