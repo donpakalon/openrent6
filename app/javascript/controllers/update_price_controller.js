@@ -10,8 +10,6 @@ export default class extends Controller {
   }
 
   price() {
-    console.log("Price action triggered!");
-
     const start = this.startTarget.value
     const end = this.endTarget.value
     // const url = `/${this.idValue}`

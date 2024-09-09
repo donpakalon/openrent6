@@ -35,18 +35,3 @@
   </div>
   <%= link_to "Réserver ce véhicule", rentals_path, method: :post, class: "book-link", data: { turbo_method: :post }  %>
 </div>
-
-<!--<div>
-  <turbo-frame id="results">
-    <%#= form_with url: search_results_path, method: :get, data: { turbo: "true", turbo_frame: "results", controller: "test", action: "change->test#update" } do |f| %>-->
-      <%#= f.label :date, "Select a date" %>
-      <%#= f.date_field :date, class: "form-control" %>
-    <%# end %>
-<!--    <div>Search results will appear here.</div>
-  </turbo-frame>
-</div>
--->
-<%= turbo_frame_tag "results" do %>
-  <p>Initial content inside the turbo frame</p>
-<% end %>
-<%= link_to "Update Frame", search_results_path(date: '2024-09-10'), data: { turbo_frame: "results" }, method: :get %>

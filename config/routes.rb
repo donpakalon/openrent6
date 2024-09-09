@@ -9,6 +9,4 @@ Rails.application.routes.draw do
 
   resources :car_categories, only: %i[index show]
   resources :rentals
-
-  get 'search_results', to: 'pages#search_results'
 end
