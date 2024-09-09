@@ -1,17 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
 import flatpickr from "flatpickr";
 
-// Connects to data-controller="datepicker"
 export default class extends Controller {
-
   connect() {
-    if (this.element._flatpickr) {
-      this.element._flatpickr.destroy();
-    }
-    flatpickr(this.element,
-      {
-        disableMobile: "true",
-      }
-    );
+    flatpickr(this.element, {
+      dateFormat: "d/m/Y H:i",
+      enableTime: true,
+      time_24hr: true,
+      minuteIncrement: 30,
+      minDate: "today",
+    });
   }
 }
