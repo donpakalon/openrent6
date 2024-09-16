@@ -12,7 +12,10 @@
   </head>
 
   <body>
-    <%=render 'shared/navbar'  %>
+    <!--Line below is hidding navbar if the controller action name is not index or show-->
+    <% if action_name == 'index' || action_name == 'show' %>
+      <%=render 'shared/navbar'  %>
+    <% end %>
     <%= yield %>
     <%=render 'shared/flashes'  %>
 

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   resources :car_categories, only: %i[index show]
   resources :rentals
+  resources :photos, only: %i[index show new create]
 end
