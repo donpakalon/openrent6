@@ -83,16 +83,27 @@ export default class extends Controller {
   }
 
   selectDate(event) {
-    if (this.selectionValue) {
+    const selectedDate = new Date()
+    selectedDate.setFullYear(event.currentTarget.dataset.year)
+    selectedDate.setMonth(event.currentTarget.dataset.month, event.currentTarget.dataset.day)
+
+    if (this.selectionValue && selectedDate >= this.startDateValue) {
+      this.endDateValue.setMonth(event.currentTarget.dataset.month, event.currentTarget.dataset.day)
+      this.endDateValue.setFullYear(event.currentTarget.dataset.year)
+      this.selectionValue = !this.selectionValue;
+    } else if (!this.selectionValue && selectedDate <= this.endDateValue) {
+      this.startDateValue.setMonth(event.currentTarget.dataset.month, event.currentTarget.dataset.day)
+      this.startDateValue.setFullYear(event.currentTarget.dataset.year)
+      this.selectionValue = !this.selectionValue;
+    } else if (!this.selectionValue) {
       this.endDateValue.setMonth(event.currentTarget.dataset.month, event.currentTarget.dataset.day)
       this.endDateValue.setFullYear(event.currentTarget.dataset.year)
     } else {
       this.startDateValue.setMonth(event.currentTarget.dataset.month, event.currentTarget.dataset.day)
       this.startDateValue.setFullYear(event.currentTarget.dataset.year)
     }
-    this.selectionValue = !this.selectionValue;
 
-    this.dispatch("dateSender", { detail: { startDate: this.startDateValue, endDate: this.endDateValue } })
+    this.dispatch("dateSender", { detail: { startDate: this.startDateValue, endDate: this.endDateValue, nextSelectedDate: this.selectionValue } })
     event.currentTarget.firstElementChild.classList.add("visible")
 
     this.markDates();

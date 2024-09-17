@@ -8,7 +8,8 @@ export default class extends Controller {
 
   static targets = [
     "startDateDayOfWeek", "startDateDay", "startDateMonth", "startDateYear", "startTime",
-    "endDateDayOfWeek", "endDateDay", "endDateMonth", "endDateYear", "endTime"
+    "endDateDayOfWeek", "endDateDay", "endDateMonth", "endDateYear", "endTime",
+    "startDateButton", "endDateButton"
   ];
 
   connect() {
@@ -44,7 +45,7 @@ export default class extends Controller {
     return `${hours}:${minutes}`;
   }
 
-  dateListener({ detail: { startDate, endDate } }) {
+  dateListener({ detail: { startDate, endDate, nextSelectedDate } }) {
     // Check if both startDate and endDate are valid Date objects
     if (this.isValidDate(startDate) && this.isValidDate(endDate)) {
       // Update startDateValue
@@ -60,6 +61,14 @@ export default class extends Controller {
       this.updateDisplay();
     } else {
       console.error("Received invalid Date object(s)");
+    }
+
+    if (nextSelectedDate) {
+      this.endDateButtonTarget.classList.add("selected-selector-section")
+      this.startDateButtonTarget.classList.remove("selected-selector-section")
+    } else {
+      this.startDateButtonTarget.classList.add("selected-selector-section")
+      this.endDateButtonTarget.classList.remove("selected-selector-section")
     }
   }
 
