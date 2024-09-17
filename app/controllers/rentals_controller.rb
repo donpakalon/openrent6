@@ -25,8 +25,12 @@ class RentalsController < ApplicationController
   end
 
   def index
-    ## get the rentals of the curent user
     @rentals = current_user.rentals
+    if params[:status].present?
+      @rentals = @rentals.where(status: params[:status])
+    else
+      @rentals = []
+    end
   end
 
   def show
@@ -50,5 +54,9 @@ class RentalsController < ApplicationController
 
   def rental_params
     params.require(:rental).permit(:starts_at, :ends_at)
+  end
+
+  def sort_params
+    params.require(:rental).permit(:pending, :tocome, :done)
   end
 end

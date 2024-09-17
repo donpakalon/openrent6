@@ -1,3 +1,5 @@
+
+<%= turbo_frame_tag "rentals_frame" do %>
   <div class="container">
     <h1>Votre reservation</h1>
         <div class="featured-car-card">
@@ -58,3 +60,4 @@
   <%= link_to "Voir mes reservations", rentals_path, class: "btn btn-primary"%>
   <%= link_to "Commencer le check-in", new_photo_path, class: "btn btn-primary mt-2"%>
 </div>
+<% end %>

@@ -1,0 +1,47 @@
+<div class="row">
+
+    <% if @rentals.empty? %>
+      <p><strong>choisir un filtre</strong></p>
+    <% else %>
+    <% @rentals.each do |rental| %>
+      <div class="col-lg-6 col-xl-4 mb-4"> <!-- Adjusted for wider but still responsive cards -->
+        <div class="rental-card card p-3"> <!-- Increased padding for better spacing -->
+          <div class="row no-gutters d-flex">
+            <!-- Image on the left -->
+            <div class="col-7">
+              <%= image_tag "#{rental.car_category.name}.png", alt: 'Description de l\'image', class: "rental-image" %>
+            </div>
+            <!-- Rental details on the right -->
+            <div class="col-5">
+              <div class="card-body">
+                <!-- Status -->
+                <p class="status-text <%= rental.status == 'confirmed' ? 'confirmed-status' : 'pending-status' %>">
+                  <%= rental.status.capitalize %> <%= rental.status == 'confirmed' ? '✔' : '⏳' %>
+                </p>
+                <!-- Car brand and model -->
+                <h5 class="card-title"><%= rental.car.brand %> <%= rental.car.model %></h5>
+                <!-- Rental period -->
+                <div class="rental-period">
+                  <hr class="date-separator">
+                  <p class="date-line">
+                    <span><%= rental.starts_at.strftime('%d-%m-%y') %></span>
+                    <i class="fas fa-plane-departure"></i>
+                  </p>
+                  <hr class="date-separator"> <!-- Horizontal line as a separator -->
+                  <p class="date-line">
+                    <span><%= rental.ends_at.strftime('%d-%m-%y') %></span>
+                    <i class="fas fa-plane-arrival"></i>
+                  </p>
+                </div>
+                <!-- Rental price -->
+                <p class="rental-price"><strong><%= rental.price %>€</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= link_to "see card", rental_path(rental) %>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
