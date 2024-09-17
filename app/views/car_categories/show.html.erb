@@ -1,3 +1,4 @@
+  <!-- app/views/car_categories/show.html.erb -->
 <div class="card-category-details">
   <div class="card-content mb-3">
     <h2><%= @car_category.name %></h2>
@@ -5,12 +6,25 @@
   </div>
   <div class="date-selectors" data-controller = "update-price" data-update-price-id-value="<%=@car_category.id%>">
     <%= form_with url: car_category_path(@car_category), method: :get, data: { update_price_target: "form" } do %>
-      <%= date_field_tag :start_date, session[:start_at], class: "form-control", data: { update_price_target: "start", action: "change->update-price#price" } %>
-      <%= date_field_tag :end_date, session[:end_at], class: "form-control", data: { update_price_target: "end", action: "change->update-price#price" } %>
+      <%= datetime_local_field_tag :start_date,
+                            (session[:start_at] || Time.now).to_s,
+                            class: "form-control",
+                            min: Time.now.strftime("%Y-%m-%dT%H:%M"),
+                            step: 1800,
+                            data: { update_price_target: "start", action: "change->update-price#price" } %>
+      <%= datetime_local_field_tag :end_date,
+        (Time.now + 7.days).change(hour: 12, min: 0).strftime("%Y-%m-%dT%H:%M"),
+        min: Time.now.strftime("%Y-%m-%dT%H:%M"),
+        step: 1800,
+        class: "form-control" %>
+      <%= select_tag :time_only,
+        options_for_select([ '14:30', '15:00', '15:30', '16:00', '16:30', '17:00' ], Time.now.strftime("%H:%M")),
+        class: "form-control",
+        id: "time_picker" %>
     <% end %>
-    <div class="d-flex justify-content-center mt-3">    <%= render 'price' %>
-</div>
-
+    <div class="d-flex justify-content-center mt-3">
+      <%= render 'price' %>
+    </div>
   </div>
   <%= image_tag "#{@car_category.name}.png", alt: 'Description de l\'image' %>
   <div class="car-infos mt-3">
