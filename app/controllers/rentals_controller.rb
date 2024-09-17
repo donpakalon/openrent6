@@ -11,7 +11,8 @@ class RentalsController < ApplicationController
     @rental = Rental.new(
       starts_at: starts_at,
       ends_at: ends_at,
-      price: car_category.calculate_price(starts_at, ends_at)
+      price: car_category.calculate_price(starts_at, ends_at),
+      status: "pending"
     )
     @rental.user = @user
     @rental.car_category = car_category
