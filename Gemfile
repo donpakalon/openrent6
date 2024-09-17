@@ -8,6 +8,8 @@ gem 'ffi', '~> 1.16.0'
 
 gem 'derailed_benchmarks'
 
+gem 'ruby-statistics'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 
