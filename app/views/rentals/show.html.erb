@@ -57,4 +57,10 @@
 <div class="d-flex flex-column justify-content-center mt-4 mb-5">
   <%= link_to "Voir mes reservations", rentals_path, class: "btn btn-primary"%>
   <%= link_to "Commencer le check-in", new_photo_path, class: "btn btn-primary mt-2"%>
+  <%= link_to "Create Check-in Event",
+            rental_rental_events_path(@rental, event_type: "check_in", data: { update: "update#{Time.now}" }.to_json),
+            class: "btn btn-primary",
+            data: { turbo_method: :post } %>
+
+
 </div>
