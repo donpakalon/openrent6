@@ -6,7 +6,7 @@
   </div>
   <div class="photos-container">
     <ul class="photos-gallery">
-      <% Photo.all.each do |photo| %>
+      <% @photos.each do |photo| %>
         <li class="check-photos"><%= cl_image_tag(photo.url, alt: "Photo #{photo.id}") %></li>
       <% end %>
     </ul>
