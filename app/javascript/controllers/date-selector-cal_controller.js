@@ -139,8 +139,6 @@ export default class extends Controller {
   }
 
   markRangeDays(startDate, endDate) {
-    let firstDayFound = false;
-
     this.dayTargets.forEach((dayElement, index) => {
       const dayDate = this.getDateFromElement(dayElement);
 
@@ -149,13 +147,12 @@ export default class extends Controller {
         const overlay = this.overlayTargets[index];
         overlay.classList.add("start-day", "visible");
         this.setFirstDayStyles(overlay, startDate);
-        firstDayFound = true;
       } else if (this.areDatesEqual(dayDate, endDate)) {
         // Mark the last day
         const overlay = this.overlayTargets[index];
         this.setLastDayStyles(overlay, endDate);
         overlay.classList.add("end-day", "visible");
-      } else if (firstDayFound && dayDate > startDate && dayDate < endDate) {
+      } else if (dayDate > startDate && dayDate < endDate) {
         // Mark mid-days
         const overlay = this.overlayTargets[index];
         overlay.classList.add("mid-day", "visible");
