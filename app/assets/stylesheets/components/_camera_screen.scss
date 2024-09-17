@@ -7,15 +7,30 @@ video {
   height: 450px;
   border-radius: 20px;
   background-color: gray;
+  position: relative;
 }
 
-.photos-gallery {
-  list-style: none;
-  display: inline;
+.capture-button {
+  position: absolute;
+  bottom: 40%;
 }
 
-.photos-gallery img {
-  width: 100px;
+.photos-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; /* Enable snapping */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  -ms-overflow-style: none;  /* Hide scrollbar on IE and Edge */
   padding: 10px;
-  border-radius: 20px;
+  scrollbar-width: none;  /* Hide scrollbar on Firefox */
+}
+
+.photos-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar on WebKit browsers */
+}
+
+.gallery {
+  width: 150px;
+  margin-right: 5px;
+  border-radius: 10px;
 }
