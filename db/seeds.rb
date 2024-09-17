@@ -1,13 +1,12 @@
 # db/seeds.rb
 
 # Create Car Categories
-
+RentalEvent.destroy_all
 Rental.destroy_all
 User.destroy_all
 Car.destroy_all
 DailyRate.destroy_all
 CarCategory.destroy_all
-RentalEvent.destroy_all
 
 car_categories = [
   { name: 'Economy' },
