@@ -1,0 +1,24 @@
+<div class="calendar-container" data-controller="date-selector-cal" data-date-selector-cal-current-year-value="<%= Time.zone.now.year %>" data-date-selector-cal-current-month-value="<%= Time.zone.now.month - 1 %>">
+  <!-- Month Navigation -->
+  <div class="month-navigation">
+    <button data-action="click->date-selector-cal#changeMonth" data-step="-1">&lt;</button>
+    <span class="month-year" data-date-selector-cal-target="monthYear">Month Year</span>
+    <button data-action="click->date-selector-cal#changeMonth" data-step="1">&gt;</button>
+  </div>
+
+  <!-- Weekday Headers -->
+  <div class="days-row">
+    <% %w(Lu Ma Me Je Ve Sa Di).each do |day| %>
+      <div class="weekday"><%= day %></div>
+    <% end %>
+  </div>
+
+  <!-- Date Grid with 42 predefined slots -->
+  <div class="date-grid" data-date-selector-cal-target="dateGrid">
+    <% 42.times do %>
+      <div class="day empty" data-date-selector-cal-target="day">
+        <div class="overlay" data-date-selector-cal-target="overlay"></div>
+      </div>
+    <% end %>
+  </div>
+</div>

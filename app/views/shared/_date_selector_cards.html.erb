@@ -1,0 +1,44 @@
+<div class="date-selectors"
+     data-controller="date-selector-card"
+     data-action="date-selector-cal:dateSender@window->date-selector-card#dateListener"
+     data-date-selector-card-start-date-string-value="<%= session[:start_at] %>"
+     data-date-selector-card-end-date-string-value="<%= session[:end_at] %>">
+  <div class="date-selector-card">
+    <button type="button" class="date-selector-section"
+            data-action="click-><%= start_date_cmd if defined?(start_date_cmd) && start_date_cmd %>"
+            data-date-selector-card-target="startDateButton">
+      <div class="date-line1">Date de départ</div>
+      <div class="date-line2" data-date-selector-card-target="startDateDayOfWeek">DAY</div>
+      <div class="date-line3">
+        <span class="date-day" data-date-selector-card-target="startDateDay">DD</span>
+        <span class="date-month" data-date-selector-card-target="startDateMonth">month</span>
+        <span class="date-year" data-date-selector-card-target="startDateYear">YYYY</span>
+      </div>
+    </button>
+    <button type="button" class="time-selector-section"
+            data-action="click-><%= start_time_cmd if defined?(start_time_cmd) && start_time_cmd %>"
+            data-date-selector-card-target="startTimeButton">
+      <div class="time-line1">Heure de départ</div>
+      <div class="time-line2" data-date-selector-card-target="startTime">MM:HH</div>
+    </button>
+  </div>
+  <div class="date-selector-card">
+    <button type="button" class="date-selector-section"
+            data-action="click-><%= end_date_cmd if defined?(end_date_cmd) && end_date_cmd %>"
+            data-date-selector-card-target="endDateButton">
+      <div class="date-line1">Date de retour</div>
+      <div class="date-line2" data-date-selector-card-target="endDateDayOfWeek">DAY</div>
+      <div class="date-line3">
+        <span class="date-day" data-date-selector-card-target="endDateDay">DD</span>
+        <span class="date-month" data-date-selector-card-target="endDateMonth">month</span>
+        <span class="date-year" data-date-selector-card-target="endDateYear">YYYY</span>
+      </div>
+    </button>
+    <button type="button" class="time-selector-section"
+            data-action="click-><%= end_time_cmd if defined?(end_time_cmd) && end_time_cmd %>"
+            data-date-selector-card-target="endTimeButton">
+      <div class="time-line1">Heure de retour</div>
+      <div class="time-line2" data-date-selector-card-target="endTime">MM:HH</div>
+    </button>
+  </div>
+</div>
