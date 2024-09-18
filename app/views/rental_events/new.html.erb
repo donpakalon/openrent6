@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "rentals_frame" do %>
+<%#= turbo_frame_tag "rentals_frame" do %>
   <div class="container">
     <%= link_to 'Back', car_categories_path %>
     <div class="camera-screen d-flex flex-column align-items-center" data-controller="photo" data-photo-rental-value="<%= params[:rental_id] %>" data-photo-event-value="<%= params[:event_type] %>" >
@@ -13,4 +13,4 @@
       <% end %>
     </div>
   </div>
-<% end %>
+<%# end %>

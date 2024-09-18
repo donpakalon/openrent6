@@ -1,6 +1,6 @@
 <h1>Mes Locations</h1>
 
-<%= turbo_frame_tag "rentals_frame" do %>
+<%#= turbo_frame_tag "rentals_frame" do %>
   <div class="container">
   <%= form_with url: rentals_path, method: :get, local: true, id: 'rental-filter-form' do %>
     <div class="btn-group d-flex" role="group" aria-label="Rental Status">
@@ -19,4 +19,4 @@
   <%= render partial: "myrentals" %>
   </div>
   </div>
-<% end %>
+<%# end %>
