@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :car_categories, only: %i[index show]
   resources :rentals do
-    resources :rental_events, only: %i[create update]
+    resources :rental_events, only: %i[new create update]
   end
-  resources :photos, only: %i[index show new create]
+  # resources :photos, only: %i[index show new create]
 end

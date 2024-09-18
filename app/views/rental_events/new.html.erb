@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "rentals_frame" do %>
+  <div class="container">
+    <%= link_to 'Back', car_categories_path %>
+    <div class="camera-screen d-flex flex-column align-items-center" data-controller="photo" data-photo-rental-value="<%= params[:rental_id] %>" data-photo-event-value="<%= params[:event_type] %>" >
+      <video data-photo-target="video" muted autoplay playsinline></video>
+      <button data-photo-target="captureButton" data-action="click->photo#takePhoto" class="capture-button btn btn-primary"><i class="fa-solid fa-camera"></i></button>
+    </div>
+    <div class="photos-container">
+      <% if @rental_event %>
+        <% @rental_event.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, alt: "Photo #{photo}", class: "gallery" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

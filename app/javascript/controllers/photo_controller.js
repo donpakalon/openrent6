@@ -2,6 +2,10 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["video", "captureButton"]
+  static values = {
+    rental: Number,
+    event:String
+  }
 
   connect() {
     console.log("Photo controller connected")
@@ -31,10 +35,10 @@ export default class extends Controller {
 
     canvas.toBlob((blob) => {
       const formData = new FormData()
-      formData.append('photo[photo]', blob, 'photo.png')  // 'photo[photo]' correspond au paramètre attendu dans Rails
+      formData.append('photo[photo]', blob, 'photo.png')
+      formData.append('event_type', this.eventValue)
 
-
-      fetch('/photos', {
+      fetch(`/rentals/${this.rentalValue}/rental_events`, {
         method: 'POST',
         headers: {
           'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')  // Ajoute le token CSRF
