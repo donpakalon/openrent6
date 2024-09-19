@@ -1,0 +1,16 @@
+<div data-controller="date-selector-modal">
+  <%= render partial: "shared/date_selector_cards", locals: { start_date_cmd: "date-selector-modal#openModal", end_date_cmd: "date-selector-modal#openModal" } %>
+
+  <div class="modal" data-date-selector-modal-target="modal">
+    <div class="modal-content">
+      <button type="button" data-action="click->date-selector-modal#closeModal">X</button>
+        <%= render partial: "shared/date_selector_cards" %>
+        <%= render partial: "shared/date_selector_cal" %>
+        <%= render partial: "shared/date_selector_time_picker" %>
+        <%= link_to "Valider Dates",
+          car_categories_path,
+          class: "btn btn-primary",
+          data_action: "click->date-selector-modal#closeModal" %>
+    </div>
+  </div>
+</div>

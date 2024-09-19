@@ -1,74 +1,23 @@
-  <!-- app/views/car_categories/show.html.erb -->
 <div class="card-category-details">
   <div class="card-content mb-3">
     <h2><%= @car_category.name %></h2>
     <p>Automatique - Diesel</p>
   </div>
   <div class="calendar-container">
-    <%= render partial: "shared/date_selector_cards" %>
-    <%= render partial: "shared/date_selector_cal" %>
+    <%= render partial: "shared/date_selector_modal" %>
   </div>
-  <div class="date-selectors" data-controller = "update-price" data-update-price-id-value="<%=@car_category.id%>">
-    <%#= form_with url: car_categories_path, method: :get do |f| %>
-<!--        <div class="date-inputs">-->
-          <%#= f.text_field :start_date,
-                value: params[:start_date],
-                id: "start_date",
-                class: "form-control",
-                placeholder: "Date de début",
-                data: { controller: "datepicker" } %>
-          <%#= f.text_field :end_date,
-                value: params[:end_date],
-                id: "end_date",
-                class: "form-control",
-                placeholder: "Date de fin",
-                data: { controller: "datepicker" } %>
-<!--        </div>
-        <div class="button d-flex justify-content-center mt-3">
-          <%#= submit_tag "Search", name: "", class: "btn btn-primary" %>-->
-<!--        </div>-->
-       <%# end %>
+<%= render partial: "shared/date_selector_time_picker" %>
 
-      <!--<div class="date-picker-container" data-controller="calendar" data-calendar-start-date-value="<%#= session[:start_at] %>" data-calendar-end-date-value="<%= session[:end_at] %>">
-        <div data-calendar-target="modal" class="modal">
-          <div class="modal-content">
-            <span class="close-button" data-action="click->calendar#closeModal">&times;</span>
-            <%##= render partial: "shared/date_selector_cards" %>-->
-<!--          </div>
-        </div>
-      </div>-->
-<!---->
+  <div class="date-selectors" data-controller = "update-price" data-update-price-id-value="<%=@car_category.id%>">
     <div class="d-flex justify-content-center mt-3">
       <%= render 'price' %>
     </div>
   </div>
-
-<!--<div class="date-picker-container" data-controller="calendar" data-calendar-start-date-value="<%#= session[:start_at] %>" data-calendar-end-date-value="<%= session[:end_at] %>">
-  <button type="button" data-action="click->calendar#openModal">Select Date Range</button>
-   <!-- Date Picker Modal -->-->
-<!--  <div data-calendar-target="modal" class="modal">
-    <div class="modal-content">
-      <span class="close-button" data-action="click->calendar#closeModal">&times;</span>
-      <%##= render partial: "shared/date_selector_cards", locals: { toto: nil }%>-->
-       Calendar container
-<!--      <div data-calendar-target="calendarContainer" class="calendar-container">
-<!--         Calendar will be generated dynamically here-->
       </div>
-
       <div data-calendar-target="timeContainer" class="time-container" style="display: none;">
         <div class="time-range-container"></div>
         <div class="time-slot-container"></div>
       </div>
-      <!-- Confirm button -->-->
-<!--      <div class="btn-line">
-        <button type="button" data-action="click->calendar#confirmDates" class="main-btn">Valider Dates</button>
-      </div>
-    </div>
-  </div>
-</div>-->
-
-
-
 
   <%= image_tag "#{@car_category.name}.png", alt: 'Description de l\'image' %>
   <div class="car-infos mt-3">

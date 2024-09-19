@@ -1,12 +1,14 @@
 <div class="date-selectors"
      data-controller="date-selector-card"
-     data-action="date-selector-cal:dateSender@window->date-selector-card#dateListener"
-     data-date-selector-card-start-date-string-value="<%= session[:start_at] %>"
-     data-date-selector-card-end-date-string-value="<%= session[:end_at] %>">
+     data-action="date-selector-time-picker:timeSender@window->date-selector-card#timeListener
+                  date-selector-cal:dateSender@window->date-selector-card#dateListener"
+     data-date-selector-card-start-date-string-value= "<%= session[:start_at] %>"
+     data-date-selector-card-end-date-string-value = "<%= session[:end_at] %>">
   <div class="date-selector-card">
     <button type="button" class="date-selector-section"
-            data-action="click-><%= start_date_cmd if defined?(start_date_cmd) && start_date_cmd %>"
-            data-date-selector-card-target="startDateButton">
+            data-action="click->date-selector-card#changeNextSelection<%= " click->#{start_date_cmd}" if defined?(start_date_cmd) && start_date_cmd %>"
+            data-date-selector-card-target="startDateButton"
+            data-selection="start-date">
       <div class="date-line1">Date de départ</div>
       <div class="date-line2" data-date-selector-card-target="startDateDayOfWeek">DAY</div>
       <div class="date-line3">
@@ -16,16 +18,18 @@
       </div>
     </button>
     <button type="button" class="time-selector-section"
-            data-action="click-><%= start_time_cmd if defined?(start_time_cmd) && start_time_cmd %>"
-            data-date-selector-card-target="startTimeButton">
+            data-action="click->date-selector-card#changeNextSelection<%= " click->#{start_time_cmd}" if defined?(start_time_cmd) && start_time_cmd %>"
+            data-date-selector-card-target="startTimeButton"
+            data-selection="start-time">
       <div class="time-line1">Heure de départ</div>
       <div class="time-line2" data-date-selector-card-target="startTime">MM:HH</div>
     </button>
   </div>
   <div class="date-selector-card">
     <button type="button" class="date-selector-section"
-            data-action="click-><%= end_date_cmd if defined?(end_date_cmd) && end_date_cmd %>"
-            data-date-selector-card-target="endDateButton">
+            data-action="click->date-selector-card#changeNextSelection<%= " click->#{end_date_cmd}" if defined?(end_date_cmd) && end_date_cmd %>"
+            data-date-selector-card-target="endDateButton"
+            data-selection="end-date">
       <div class="date-line1">Date de retour</div>
       <div class="date-line2" data-date-selector-card-target="endDateDayOfWeek">DAY</div>
       <div class="date-line3">
@@ -35,8 +39,9 @@
       </div>
     </button>
     <button type="button" class="time-selector-section"
-            data-action="click-><%= end_time_cmd if defined?(end_time_cmd) && end_time_cmd %>"
-            data-date-selector-card-target="endTimeButton">
+            data-action="click->date-selector-card#changeNextSelection<%= " click->#{end_time_cmd}" if defined?(end_time_cmd) && end_time_cmd %>"
+            data-date-selector-card-target="endTimeButton"
+            data-selection="end-time">
       <div class="time-line1">Heure de retour</div>
       <div class="time-line2" data-date-selector-card-target="endTime">MM:HH</div>
     </button>

@@ -6,7 +6,7 @@ export default class extends Controller {
     currentDate: { type: Date, default: new Date() },
     startDate: { type: Date, default: new Date() },
     endDate: { type: Date, default: new Date() },
-    selection: { type: Boolean, default: false }
+    selection: { type: String }
   };
 
   connect() {
@@ -27,6 +27,16 @@ export default class extends Controller {
     const step = parseInt(event.currentTarget.dataset.step, 10);
     this.currentDateValue.setMonth(this.currentDateValue.getMonth() + step);
     this.renderCalendar();
+  }
+
+  showOrHide(){
+    if (this.selectionValue==="end-date" || this.selectionValue==="start-date"){
+      this.element.style.display = "flex"
+      console.log("setting display to flex");
+    }else{
+      this.element.style.display = "none"
+      console.log("HELLO");
+    }
   }
 
   renderCalendar() {
@@ -82,29 +92,45 @@ export default class extends Controller {
     this.markDates()
   }
 
+  selectionListener({ detail: { nextSelectedDate } }){
+    this.selectionValue = nextSelectedDate
+    console.log("cal is receiving sth as well");
+    this.markDates()
+  }
+
   selectDate(event) {
     const selectedDate = new Date()
     selectedDate.setFullYear(event.currentTarget.dataset.year)
     selectedDate.setMonth(event.currentTarget.dataset.month, event.currentTarget.dataset.day)
 
-    if (this.selectionValue && selectedDate >= this.startDateValue) {
+    if (this.selectionValue === "end-date" && selectedDate >= this.startDateValue) {
       this.endDateValue.setMonth(event.currentTarget.dataset.month, event.currentTarget.dataset.day)
       this.endDateValue.setFullYear(event.currentTarget.dataset.year)
-      this.selectionValue = !this.selectionValue;
-    } else if (!this.selectionValue && selectedDate <= this.endDateValue) {
+      this.selectionValue = "start-time";
+      console.log("selection:" + this.selectionValue);
+
+    } else if (this.selectionValue ==="start-date" && selectedDate <= this.endDateValue) {
       this.startDateValue.setMonth(event.currentTarget.dataset.month, event.currentTarget.dataset.day)
       this.startDateValue.setFullYear(event.currentTarget.dataset.year)
-      this.selectionValue = !this.selectionValue;
-    } else if (!this.selectionValue) {
+      this.selectionValue = "end-date";
+      console.log("selection:" + this.selectionValue);
+
+    } else if (this.selectionValue ==="start-date") {
       this.endDateValue.setMonth(event.currentTarget.dataset.month, event.currentTarget.dataset.day)
       this.endDateValue.setFullYear(event.currentTarget.dataset.year)
-    } else {
+      console.log("selection:" + this.selectionValue);
+
+    } else if (this.selectionValue ==="end-date") {
       this.startDateValue.setMonth(event.currentTarget.dataset.month, event.currentTarget.dataset.day)
       this.startDateValue.setFullYear(event.currentTarget.dataset.year)
+      console.log("selection:" + this.selectionValue);
+
     }
 
     this.dispatch("dateSender", { detail: { startDate: this.startDateValue, endDate: this.endDateValue, nextSelectedDate: this.selectionValue } })
     event.currentTarget.firstElementChild.classList.add("visible")
+
+    this.updateSessionDates(this.startDateValue, this.endDateValue);
 
     this.markDates();
   }
@@ -116,7 +142,35 @@ export default class extends Controller {
     });
   }
 
+  updateSessionDates(startDate, endDate) {
+    fetch('/car_categories/update_dates', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+      },
+      body: JSON.stringify({
+        start_date: startDate.toISOString().split('T')[0],
+        end_date: endDate.toISOString().split('T')[0]
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Failed to update session');
+      }
+    })
+    .then(data => {
+      console.log('Session updated:', data);
+    })
+    .catch(error => {
+      console.error('Error updating session:', error);
+    });
+  }
+
   markDates() {
+    this.showOrHide()
     this.resetOverlays();
     const startDate = this.startDateValue;
     const endDate = this.endDateValue;

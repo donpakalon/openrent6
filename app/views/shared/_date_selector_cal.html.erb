@@ -1,4 +1,8 @@
-<div class="calendar-container" data-controller="date-selector-cal" data-date-selector-cal-current-year-value="<%= Time.zone.now.year %>" data-date-selector-cal-current-month-value="<%= Time.zone.now.month - 1 %>">
+<div class="calendar-container"
+  data-controller="date-selector-cal"
+  data-date-selector-cal-current-year-value="<%= Time.zone.now.year %>"
+  data-date-selector-cal-current-month-value="<%= Time.zone.now.month - 1 %>"
+  data-action="date-selector-card:selectionSender@window->date-selector-cal#selectionListener">
   <!-- Month Navigation -->
   <div class="month-navigation">
     <button data-action="click->date-selector-cal#changeMonth" data-step="-1">&lt;</button>

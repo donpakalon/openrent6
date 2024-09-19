@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :car_categories, only: %i[index show]
+  post 'car_categories/update_dates', to: 'car_categories#update_dates'
+
   resources :rentals
 end

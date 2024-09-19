@@ -39,7 +39,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
 }
 
 .days-row, .date-grid {
@@ -141,7 +140,7 @@
   background-color: #e2e2e2;
 }
 
-.time-slot-container {
+.time-slot-group {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr; /* Two columns for hours and half-hour increments */
   gap: 10px;
