@@ -1,15 +1,6 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path('banner-img.jpg') %>);">
-  <div class="container">
-    <div class="search-dates">
-      <div class="calendar-container">
-          <%= render partial: "shared/date_selector_modal" %>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="cards-container mt-3">
-  <% @available_categories.each do |category| %>
+  <p>I am turbo!</p>
+  <% categories.each do |category| %>
     <div class="card-category">
       <div class="card-content">
         <h2><%= category.name %></h2>

@@ -6,7 +6,7 @@ export default class extends Controller {
   static values = { id: Number }
 
   connect() {
-    console.log(this.priceTarget)
+    console.log("Update price controller connecting")
   }
 
   price() {

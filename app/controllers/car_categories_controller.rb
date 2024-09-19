@@ -1,12 +1,7 @@
 class CarCategoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
+
   def index
-    # @car_categories = CarCategory.all
-    # @car_categories = CarCategory.where(name: params[:query]) if params[:query].present?
-    # @overlapping_rentals = Rental.where("starts_at <= ? AND ends_at >= ?", params[:end_date], params[:start_date])
-    # @overlapping_cars = @overlapping_rentals.map(&:car).uniq
-    # @available_cars = Car.all - @overlapping_cars
-    # @available_categories = @available_cars.map(&:car_category).uniq
     @rental = Rental.new
     if params[:start_date].present? && params[:end_date].present?
       starts_at = params[:start_date]
@@ -16,9 +11,17 @@ class CarCategoriesController < ApplicationController
       session[:end_at] = ends_at
 
       @available_categories = CarCategory.joins(cars: :rentals)
-                                   .where.not(rentals: { starts_at: starts_at..ends_at })
-                                   .where.not(rentals: { ends_at: starts_at..ends_at })
-                                   .distinct
+                                         .where.not(rentals: { starts_at: starts_at..ends_at })
+                                         .where.not(rentals: { ends_at: starts_at..ends_at })
+                                         .distinct
+    elsif session[:start_at].present? && session[:end_at].present?
+      starts_at = session[:start_at]
+      ends_at = session[:end_at]
+
+      @available_categories = CarCategory.joins(cars: :rentals)
+                                         .where.not(rentals: { starts_at: starts_at..ends_at })
+                                         .where.not(rentals: { ends_at: starts_at..ends_at })
+                                         .distinct
     else
       @available_categories = CarCategory.all
     end
@@ -32,8 +35,14 @@ class CarCategoriesController < ApplicationController
     @price = @car_category.calculate_price(session[:start_at], session[:end_at])
     respond_to do |format|
       format.html
-      format.text { render partial: "car_categories/price", locals: {price: @price}, formats: [:html] }
+      format.text { render partial: "car_categories/price", locals: { price: @price }, formats: [:html] }
     end
+  end
+
+  def update_dates
+    session[:start_at] = params[:start_date]
+    session[:end_at] = params[:end_date]
+    render json: { message: 'Session updated successfully', start: session[:start_at], end: session[:end_at] }
   end
 
   # def price

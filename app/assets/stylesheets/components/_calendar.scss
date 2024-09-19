@@ -1,0 +1,319 @@
+// app/assets/stylesheets/components/_calendar.scss
+
+// Modal styles
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.is-visible {
+  display: flex;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.close-button {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+// Calendar styles
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.days-row, .date-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+}
+
+.day, .empty {
+  text-align: center;
+  cursor: pointer;
+  font-weight: 300;
+  z-index: 1;
+}
+
+.weekday {
+  text-align: center;
+}
+.disabled-day {
+  text-decoration: line-through;  /* Cross out past dates */
+  pointer-events: none;  /* Make them non-clickable */
+  cursor: not-allowed;  /* Show not-allowed cursor on hover */
+}
+
+.day:hover:not(.disabled-day) {
+  background-color: #e2e2e2;  /* Change background on hover (only for active days) */
+}
+
+.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.selected-start-day {
+  background-color: #007bff;  // Blue background for start date
+  color: white;
+  border-radius: 5px 0 0 5px;
+}
+
+.selected-end-day {
+  background-color: #ff6b6b;  // Red background for end date
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+.in-range {
+  background-color: #d3f9d8;  // Light green background for days in the range
+  color: #000;
+}
+
+.month-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-weight: 700;
+  font-size: 18px;
+
+
+  span {
+    text-align: center;
+  }
+
+  button {
+    border: 0;
+    background: none;
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
+}
+
+
+.time-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.time-range-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Two columns for hours and half-hour increments */
+  gap: 10px;
+}
+
+.time-range {
+  padding: 5px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.time-range:hover {
+  background-color: #e2e2e2;
+}
+
+.time-slot-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Two columns for hours and half-hour increments */
+  gap: 10px;
+}
+
+.time-slot {
+  padding: 5px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.time-slot:hover {
+  background-color: #e2e2e2;
+}
+
+.time-slot.selected-time-slot {
+  background-color: #007bff;
+  color: white;
+}
+
+
+.selected-time-range {
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.date-selectors {
+  display: flex;
+  justify-content: space-between;
+  gap: 10%;
+}
+
+.date-selector-section, .time-selector-section {
+  border: 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.date-selector-card {
+  width: 150px;
+  height: 150px;
+}
+
+.date-selector-section {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 75px;
+  .date-line1{
+    font-weight: 300;
+    font-size: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+  }
+  .date-line2{
+    font-weight: 500;
+    font-size: 12px;
+    color: red;
+    display: flex;
+    justify-content: left;
+  }
+  .date-line3{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .date-day{
+      font-weight: 500;
+      font-size: 30px;
+      align-content: flex-end;
+      line-height: 1;
+    }
+    .date-month{
+      font-weight: 500;
+      font-size: 16px;
+      align-content: flex-end;
+    }
+    .date-year{
+      font-weight: 500;
+      font-size: 16px;
+      align-content: flex-end;
+    }
+  }
+}
+
+.time-selector-section {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 75px;
+  .time-line1{
+    font-weight: 300;
+    font-size: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+  }
+  .time-line2{
+    font-weight: 700;
+    font-size: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.selected-selector-section {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-line {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  .main-btn {
+    border: 0;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    width: 50%;
+    padding: 10px;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .calendar-container {
+    width: 100%;
+  }
+}
+
+.overlay {
+  position: relative;
+  display: none;
+  height: 90%;
+  top: -95%;
+  z-index: -1;
+
+  &.visible {
+    display: block;
+  }
+
+  &.start-day {
+    border-radius: 5px 0 0 5px;
+    background: rgba(76,217,100,1);
+  }
+
+  &.end-day {
+    border-radius: 0 5px 5px 0;
+    background: rgba(255,45,85,1)
+  }
+
+  &.mid-day {
+    border-radius: 0;
+    background: rgba(150,150,150,1);
+    width: 100%;
+    left: 0;
+  }
+
+  &.one-day {
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgba(76,217,100,1) 15%, rgba(150,150,150,1) 15%, rgba(160,160,160,1) 85%, rgba(255,45,85,1) 85%);
+  }
+}
