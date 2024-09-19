@@ -1,0 +1,49 @@
+.back-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.camera-screen {
+  padding: 10px;
+}
+
+video {
+  width: 100%;
+  height: 450px;
+  border-radius: 20px;
+  background-color: gray;
+  position: relative;
+}
+
+.capture-button {
+  position: absolute;
+  bottom: 31%;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.capture-button i {
+  font-size: 24px;
+}
+
+.photos-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  padding: 10px;
+  scrollbar-width: none;
+}
+
+.photos-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar on WebKit browsers */
+}
+
+.gallery {
+  width: 150px;
+  margin-right: 5px;
+  border-radius: 10px;
+}

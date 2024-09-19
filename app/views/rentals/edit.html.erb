@@ -22,7 +22,7 @@
   <%# end %>
 <!--</div>
 -->
-
+<%#= turbo_frame_tag "rentals_frame" do %>
 <div class="search-dates mt-5">
   <%= simple_form_for @rental, method: :put do |f| %>
     <div class="date-inputs">
@@ -43,3 +43,4 @@
     </div>
   <% end %>
 </div>
+<%# end %>

@@ -1,17 +1,22 @@
-<h1>Rentals</h1>
+<h1>Mes Locations</h1>
 
-
-<div class="cards-container" >
-  <% @rentals.each do |rental| %>
-   <%= link_to rental_path(rental) do %>
-    <div class="card-category" style="width:300px;heigth:400px">
-      <div class="card-content">
-        <h2><%= rental.car.car_category.name %></h2>
-      </div>
-    <%= image_tag "#{rental.car_category.name}.png", alt: 'Description de l\'image' %>
-    <p class="price">60€/j</p>
+<%#= turbo_frame_tag "rentals_frame" do %>
+  <div class="container">
+  <%= form_with url: rentals_path, method: :get, local: true, id: 'rental-filter-form' do %>
+    <div class="btn-group d-flex" role="group" aria-label="Rental Status">
+      <label class="btn btn-outline-primary col-4 <%= 'active' if params[:status]&.include?("ongoing") %>">
+        <%= check_box_tag "status[]", "ongoing", params[:status]&.include?("ongoing"), autocomplete: "off", class: "visually-hidden", onchange: 'this.form.requestSubmit();' %> Ongoing
+      </label>
+      <label class="btn btn-outline-primary col-4 <%= 'active' if params[:status]&.include?("pending") %>">
+        <%= check_box_tag "status[]", "pending", params[:status]&.include?("pending"), autocomplete: "off", class: "visually-hidden", onchange: 'this.form.requestSubmit();' %> Pending
+      </label>
+      <label class="btn btn-outline-primary col-4 <%= 'active' if params[:status]&.include?("completed") %>">
+        <%= check_box_tag "status[]", "completed", params[:status]&.include?("completed"), autocomplete: "off", class: "visually-hidden", onchange: 'this.form.requestSubmit();' %> Completed
+      </label>
     </div>
-    <% end %>
   <% end %>
-
-</div>
+  <div>
+  <%= render partial: "myrentals" %>
+  </div>
+  </div>
+<%# end %>

@@ -1,0 +1,12 @@
+<div class="container">
+  <%= link_to 'Back', car_categories_path %>
+  <div class="camera-screen d-flex flex-column align-items-center" data-controller="photo" >
+    <video data-photo-target="video" muted autoplay playsinline></video>
+    <button data-photo-target="captureButton" data-action="click->photo#takePhoto" class="capture-button">Photo</button>
+  </div>
+  <div class="photos-container">
+    <% @photos.each do |photo| %>
+      <%= cl_image_tag(photo.url, alt: "Photo #{photo.id}", class: "gallery") %>
+    <% end %>
+  </div>
+</div>

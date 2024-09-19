@@ -11,7 +11,8 @@ class RentalsController < ApplicationController
     @rental = Rental.new(
       starts_at: starts_at,
       ends_at: ends_at,
-      price: car_category.calculate_price(starts_at, ends_at)
+      price: car_category.calculate_price(starts_at, ends_at),
+      status: "pending"
     )
     @rental.user = @user
     @rental.car_category = car_category
@@ -25,12 +26,17 @@ class RentalsController < ApplicationController
   end
 
   def index
-    ## get the rentals of the curent user
     @rentals = current_user.rentals
+    if params[:status].present?
+      @rentals = @rentals.where(status: params[:status])
+    else
+      @rentals = []
+    end
   end
 
   def show
     @rental = Rental.find(params[:id])
+    @rental_event = @rental.rental_events.find_by(event_type: "check_in")
   end
 
   def edit
@@ -50,5 +56,9 @@ class RentalsController < ApplicationController
 
   def rental_params
     params.require(:rental).permit(:starts_at, :ends_at)
+  end
+
+  def sort_params
+    params.require(:rental).permit(:pending, :tocome, :done)
   end
 end
