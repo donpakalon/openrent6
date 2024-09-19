@@ -36,6 +36,7 @@ class RentalsController < ApplicationController
 
   def show
     @rental = Rental.find(params[:id])
+    @rental_event = @rental.rental_events.find_by(event_type: "check_in")
   end
 
   def edit
