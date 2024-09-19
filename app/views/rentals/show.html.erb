@@ -51,15 +51,25 @@
               <%= link_to "Update", edit_rental_path(@rental), class: "btn btn-primary" %>
 
             </div>
-
+            <% if @rental_event %>
+              <h6 class="mt-4">Photos de votre checkin:</h6>
+              <hr />
+            <% end %>
+            <div class="photos-container-show mt-3">
+              <% if @rental_event %>
+                <% @rental_event.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, alt: "Photo #{photo}", class: "gallery-show" %>
+                <% end %>
+              <% end %>
+            </div>
           </div>
 
         </div>
 
 <div class="d-flex flex-column justify-content-center mt-4 mb-5">
-  <%= link_to "Voir mes reservations", rentals_path, class: "btn btn-primary"%>
-  <%= link_to "Create Check-in Event",
+  <%= link_to "Commencer ma location",
             new_rental_rental_event_path(@rental, event_type: "check_in"),
-            class: "btn btn-primary mt-1" %>
+            class: "btn btn-primary" %>
+  <%= link_to "Voir mes reservations", rentals_path, class: "reservations btn btn-primary  mt-1"%>
 </div>
 <%# end %>

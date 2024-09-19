@@ -1,0 +1,24 @@
+.photos-container-show {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  padding: 10px;
+  scrollbar-width: none;
+  padding: 0;
+}
+
+.photos-container-show::-webkit-scrollbar {
+  display: none; /* Hide scrollbar on WebKit browsers */
+}
+
+.gallery-show {
+  width: 90px;
+  margin-right: 8px;
+  border-radius: 10px;
+}
+
+.reservations {
+  background-color: gray;
+}
