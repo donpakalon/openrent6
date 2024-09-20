@@ -2,8 +2,8 @@
      data-controller="date-selector-card"
      data-action="date-selector-time-picker:timeSender@window->date-selector-card#timeListener
                   date-selector-cal:dateSender@window->date-selector-card#dateListener"
-     data-date-selector-card-start-date-string-value= "<%= session[:start_at] %>"
-     data-date-selector-card-end-date-string-value = "<%= session[:end_at] %>">
+     data-date-selector-card-start-date-string-value = "<%= defined?(start_date) && start_date ? start_date : session[:start_at] %>"
+     data-date-selector-card-end-date-string-value = "<%= defined?(end_date) && end_date ? end_date : session[:end_at] %>">
   <div class="date-selector-card">
     <button type="button" class="date-selector-section"
             data-action="click->date-selector-card#changeNextSelection<%= " click->#{start_date_cmd}" if defined?(start_date_cmd) && start_date_cmd %>"
