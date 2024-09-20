@@ -1,8 +1,6 @@
 <div data-controller="date-selector-modal">
   <%= render partial: "shared/date_selector_cards", locals: { start_date_cmd: "date-selector-modal#openModal",
-                                                              end_date_cmd: "date-selector-modal#openModal",
-                                                              start_time_cmd: "date-selector-modal#openModal",
-                                                              end_time_cmd: "date-selector-modal#openModal" } %>
+                                                              end_date_cmd: "date-selector-modal#openModal" } %>
   <div class="modal" data-date-selector-modal-target="modal">
     <div class="modal-content">
       <button type="button" class="close-button" data-action="click->date-selector-modal#closeModal">X</button>
