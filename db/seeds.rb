@@ -50,7 +50,7 @@ cars = [
   { licence_plate: 'KLM012', brand: 'BMW', model: 'X5', car_category: car_category_objects[2] },
   { licence_plate: 'NOP345', brand: 'BMW', model: 'Série 4 Cabriolet', car_category: car_category_objects[3] },
   { licence_plate: 'QRS678', brand: 'BMW', model: 'X5', car_category: car_category_objects[2] },
-  { licence_plate: 'TUV901', brand: 'Peugeot', model: 'E-3008', car_category: car_category_objects[4] }
+  { licence_plate: 'TUV901', brand: 'Citroen', model: 'E-C4', car_category: car_category_objects[4] }
 ]
 
 car_objects = cars.map { |car| Car.create!(car) }
