@@ -10,14 +10,13 @@
 
 <div class="cards-container mt-3">
   <% @available_categories.each do |category| %>
-    <div class="card-category">
-      <div class="card-content">
-        <h2><%= category.name %></h2>
+    <%= link_to car_category_path(category) do %>
+      <div class="card-category" style="background-image: url('<%= asset_path("#{category.name}.png") %>');">
+        <div class="card-content">
+          <h2><%= category.name %></h2>
+        </div>
+        <p class="price"><%= category.calculate_price(session[:start_at], session[:end_at]) %> €</p>
       </div>
-      <%= link_to car_category_path(category) do %>
-        <%= image_tag "#{category.name}.png", alt: 'Description de l\'image' %>
-      <% end %>
-      <p class="price"><%= category.calculate_price(session[:start_at], session[:end_at]) %> €</p>
-    </div>
+    <% end %>
   <% end %>
 </div>

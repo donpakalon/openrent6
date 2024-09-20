@@ -13,14 +13,18 @@
 }
 
 .card-category {
-  width: 80%;
+  width: 300px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   border-radius: 10px;
   position: relative;
-  flex: 0 0 auto; /* Prevent cards from shrinking */
-  scroll-snap-align: center; /* Snap card to center */
+  flex: 0 0 auto;
+  scroll-snap-align: center;
   margin: 0 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 250px;
+  background-size: 350px;
 }
 
 .card-category img {
@@ -44,7 +48,6 @@
 
 .price2 {
   background-color: gray;
-  width: 30%;
   text-align: center;
   padding: 10px;
   border-radius: 10px;

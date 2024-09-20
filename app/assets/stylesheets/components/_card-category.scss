@@ -9,8 +9,15 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.card-category-details img {
-  border-radius: 15px;
+.card-category-show {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 0 20px;
+  padding: 20px;
+}
+
+.card-category-show img {
   width: 100%;
 }
 
@@ -22,14 +29,10 @@
   border-radius: 10px;
   color: white;
   font-size: 30px;
-  // position: absolute;
-  // bottom: 18%;
-  // right: 10%;
 }
 
 .book-car-content {
-  display: flex;
-  justify-content: space-between;
+  padding: 20px;
 }
 
 .book-link {
@@ -38,4 +41,9 @@
   color: white;
   padding: 10px 20px;
   text-align: center;
+  margin: 20px;
+}
+
+.car-infos {
+  padding: 20px;
 }
