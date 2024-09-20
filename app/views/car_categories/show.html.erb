@@ -1,36 +1,14 @@
 <div class="card-category-details">
-  <div class="card-content mb-3">
-    <h2><%= @car_category.name %></h2>
-    <p>Automatique - Diesel</p>
-  </div>
-  <div class="calendar-container">
+  <div class="card-content">
     <%= render partial: "shared/date_selector_modal" %>
-  </div>
-  <div class="date-selectors" data-controller = "update-price" data-update-price-id-value="<%=@car_category.id%>">
-    <div class="d-flex justify-content-center mt-3">
-      <%= render 'price' %>
+    <div class="card-category-show">
+      <%= @car_category.name %>
+      <%= image_tag "#{@car_category.name}.png", alt: 'Description de l\'image' %>
     </div>
   </div>
-      </div>
-      <div data-calendar-target="timeContainer" class="time-container" style="display: none;">
-        <div class="time-range-container"></div>
-        <div class="time-slot-container"></div>
-      </div>
-  <div class="card-category-show">
-    <%= image_tag "#{@car_category.name}.png", alt: 'Description de l\'image' %>
-  </div>
-  <div class="car-infos mt-3">
-    <p>Age du conducteur 25ans ou plus</p>
-    <hr class="solid">
-    <p>Franchise 1500€</p>
-    <hr class="solid">
-    <p>km supp 40ct/km</p>
-    <hr class="solid">
-  </div>
-  <div class="book-car-content">
-    <div class="book-car-infos">
-      <p >Durée: 2j 8h</p>
-      <p>Commence dans: 23h</p>
+  <div class="date-selectors" data-controller = "update-price" data-update-price-id-value="<%=@car_category.id%>">
+    <div class="d-flex justify-content-center">
+      <%= render 'price' %>
     </div>
   </div>
   <%= link_to "Réserver ce véhicule", rentals_path, method: :post, class: "book-link", data: { turbo_method: :post }  %>
