@@ -6,8 +6,6 @@
   <div class="calendar-container">
     <%= render partial: "shared/date_selector_modal" %>
   </div>
-<%= render partial: "shared/date_selector_time_picker" %>
-
   <div class="date-selectors" data-controller = "update-price" data-update-price-id-value="<%=@car_category.id%>">
     <div class="d-flex justify-content-center mt-3">
       <%= render 'price' %>
