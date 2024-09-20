@@ -25,12 +25,12 @@
                   <div class="rental-period">
                     <hr class="date-separator">
                     <p class="date-line">
-                      <span><%= rental.starts_at.strftime('%d-%m-%y') %></span>
+                      <span><%= rental.starts_at.strftime('%d/%m/%y') %></span>
                       <i class="fas fa-plane-departure"></i>
                     </p>
                     <hr class="date-separator"> <!-- Horizontal line as a separator -->
                     <p class="date-line">
-                      <span><%= rental.ends_at.strftime('%d-%m-%y') %></span>
+                      <span><%= rental.ends_at.strftime('%d/%m/%y') %></span>
                       <i class="fas fa-plane-arrival"></i>
                     </p>
                   </div>

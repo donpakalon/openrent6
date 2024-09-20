@@ -3,7 +3,6 @@
   <div class="container">
     <h1>Votre reservation</h1>
         <div class="featured-car-card">
-
           <div class="card-banner">
             <%= image_tag "#{@rental.car_category.name}.png", alt: 'Description de l\'image' %>
           </div>
@@ -22,22 +21,17 @@
 
               <li class="card-list-item">
 
-                <span class="card-item-text">4 People</span>
+                <span class="card-item-text">Du: <%= @rental.starts_at.strftime("%d/%m/%Y") %></span>
               </li>
 
               <li class="card-list-item">
 
-                <span class="card-item-text">Hybrid</span>
+                <span class="card-item-text">Au: <%= @rental.ends_at.strftime("%d/%m/%Y") %></span>
               </li>
 
               <li class="card-list-item">
 
-                <span class="card-item-text">6.1km / 1-litre</span>
-              </li>
-
-              <li class="card-list-item">
-
-                <span class="card-item-text">Automatic</span>
+                <span class="card-item-text">500km inclus</span>
               </li>
 
             </ul>

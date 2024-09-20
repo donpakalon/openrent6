@@ -94,7 +94,7 @@ rentals = [
 
   # All categories available on August 26th
   { user: user_objects[4], car: car_objects[14], car_category: car_objects[14].car_category, status: 'completed', starts_at: Date.new(2024, 8, 26), ends_at: Date.new(2024, 8, 30), price: '420' },
-  { user: user_objects[0], car: car_objects[15], car_category: car_objects[15].car_category, status: 'ongoing', starts_at: Date.new(2024, 8, 26), ends_at: Date.new(2024, 8, 30), price: '450' },
+  { user: user_objects[0], car: car_objects[15], car_category: car_objects[15].car_category, status: 'completed', starts_at: Date.new(2024, 8, 26), ends_at: Date.new(2024, 8, 30), price: '450' },
   { user: user_objects[1], car: car_objects[16], car_category: car_objects[16].car_category, status: 'completed', starts_at: Date.new(2024, 8, 26), ends_at: Date.new(2024, 8, 30), price: '550' },
   { user: user_objects[2], car: car_objects[17], car_category: car_objects[17].car_category, status: 'completed', starts_at: Date.new(2024, 8, 26), ends_at: Date.new(2024, 8, 30), price: '680' },
   { user: user_objects[3], car: car_objects[18], car_category: car_objects[18].car_category, status: 'completed', starts_at: Date.new(2024, 8, 26), ends_at: Date.new(2024, 8, 30), price: '720' },
