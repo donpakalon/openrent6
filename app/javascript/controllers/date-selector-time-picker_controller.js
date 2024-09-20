@@ -11,6 +11,7 @@ export default class extends Controller {
 
   connect() {
     this.updateDisplay()
+    this.showDefaultDate()
   }
 
   updateDisplay(){
@@ -20,7 +21,6 @@ export default class extends Controller {
   showOrHide(){
     if (this.selectionValue==="end-time" || this.selectionValue==="start-time"){
       this.element.style.display = "flex"
-      this.showDefaultDate()
     }else{
       this.element.style.display = "none"
     }
