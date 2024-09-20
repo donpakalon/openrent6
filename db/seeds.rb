@@ -9,11 +9,11 @@ DailyRate.destroy_all
 CarCategory.destroy_all
 
 car_categories = [
-  { name: 'Economy' },
-  { name: 'Luxury' },
-  { name: 'SUV' },
-  { name: 'Convertible' },
-  { name: 'Electric' }
+  { name: 'Micro-citadine', description: 'Gamme de citadines' },
+  { name: 'Sportive', description: 'Véhicules de prestige' },
+  { name: 'SUV familial', description: 'Le confort tout terrain' },
+  { name: 'Cabriolet', description: 'Pour une sortie plein air' },
+  { name: 'Electrique', description: 'Road-Trip Ecoresponsable' }
 ]
 
 car_category_objects = car_categories.map { |category| CarCategory.create!(category) }
