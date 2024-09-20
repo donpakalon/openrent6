@@ -20,11 +20,11 @@ car_category_objects = car_categories.map { |category| CarCategory.create!(categ
 
 # Create Daily Rates
 daily_rates = [
-  { price_per_day: 30, car_category: car_category_objects[0] }, # Micro Citadine
-  { price_per_day: 150, car_category: car_category_objects[1] }, # Sportive
-  { price_per_day: 100, car_category: car_category_objects[2] }, # SUV
-  { price_per_day: 120, car_category: car_category_objects[3] }, # Cabriolet
-  { price_per_day: 200, car_category: car_category_objects[4] }  # Electrique
+  { price_per_day: 29, car_category: car_category_objects[0] }, # Micro Citadine
+  { price_per_day: 97, car_category: car_category_objects[1] }, # Sportive
+  { price_per_day: 56, car_category: car_category_objects[2] }, # SUV
+  { price_per_day: 77, car_category: car_category_objects[3] }, # Cabriolet
+  { price_per_day: 44, car_category: car_category_objects[4] }  # Electrique
 ]
 
 daily_rates.map { |rate| DailyRate.create!(rate) }
