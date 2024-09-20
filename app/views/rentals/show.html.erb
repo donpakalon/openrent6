@@ -47,9 +47,7 @@
               <p class="card-price">
                 <strong><%= @rental.price %> €</strong>
               </p>
-
-              <%= link_to "Update", edit_rental_path(@rental), class: "btn btn-primary" %>
-
+              <%= render partial: "shared/date_selector_modal" %>
             </div>
             <% if @rental_event %>
               <h6 class="mt-4">Photos de votre checkin:</h6>
