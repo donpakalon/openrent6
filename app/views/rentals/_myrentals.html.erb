@@ -16,8 +16,8 @@
               <div class="col-5">
                 <div class="card-body">
                   <!-- Status -->
-                  <p class="status-text <%= rental.status == 'confirmed' ? 'confirmed-status' : 'pending-status' %>">
-                    <%= rental.status.capitalize %> <%= rental.status == 'confirmed' ? '✔' : '⏳' %>
+                  <p class="status-text <%= rental.status == 'completed' ? 'confirmed-status' : 'pending-status' %>">
+                    <%= rental.status.capitalize %> <%= rental.status == 'completed' ? '✔' : '⏳' %>
                   </p>
                   <!-- Car brand and model -->
                   <h5 class="card-title"><%= rental.car.brand %> <%= rental.car.model %></h5>
