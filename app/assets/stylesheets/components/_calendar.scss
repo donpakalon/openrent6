@@ -172,8 +172,9 @@
 
 .date-selectors {
   display: flex;
-  justify-content: space-between;
-  gap: 10%;
+  justify-content: center;
+  gap: 3%;
+  opacity: 90%;
 }
 
 .date-selector-section, .time-selector-section {
