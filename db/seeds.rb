@@ -20,37 +20,37 @@ car_category_objects = car_categories.map { |category| CarCategory.create!(categ
 
 # Create Daily Rates
 daily_rates = [
-  { price_per_day: 30, car_category: car_category_objects[0] }, # Economy
-  { price_per_day: 150, car_category: car_category_objects[1] }, # Luxury
+  { price_per_day: 30, car_category: car_category_objects[0] }, # Micro Citadine
+  { price_per_day: 150, car_category: car_category_objects[1] }, # Sportive
   { price_per_day: 100, car_category: car_category_objects[2] }, # SUV
-  { price_per_day: 120, car_category: car_category_objects[3] }, # Convertible
-  { price_per_day: 200, car_category: car_category_objects[4] }  # Electric
+  { price_per_day: 120, car_category: car_category_objects[3] }, # Cabriolet
+  { price_per_day: 200, car_category: car_category_objects[4] }  # Electrique
 ]
 
 daily_rates.map { |rate| DailyRate.create!(rate) }
 
 # Create Cars
 cars = [
-  { licence_plate: 'ABC123', brand: 'Toyota', model: 'Corolla', car_category: car_category_objects[0] },
-  { licence_plate: 'XYZ789', brand: 'BMW', model: 'Series 3', car_category: car_category_objects[0] },
-  { licence_plate: 'LMN456', brand: 'Honda', model: 'Civic', car_category: car_category_objects[0] },
-  { licence_plate: 'QRS234', brand: 'Tesla', model: 'Model S', car_category: car_category_objects[0] },
-  { licence_plate: 'UVW567', brand: 'Jeep', model: 'Wrangler', car_category: car_category_objects[0] },
-  { licence_plate: 'DEF890', brand: 'Audi', model: 'A4', car_category: car_category_objects[0] },
-  { licence_plate: 'GHI012', brand: 'Ford', model: 'Mustang', car_category: car_category_objects[0] },
-  { licence_plate: 'JKL345', brand: 'Chevrolet', model: 'Camaro', car_category: car_category_objects[1] },
-  { licence_plate: 'MNO678', brand: 'Nissan', model: 'Leaf', car_category: car_category_objects[1] },
-  { licence_plate: 'PQR901', brand: 'Mercedes', model: 'E-Class', car_category: car_category_objects[1] },
-  { licence_plate: 'STU234', brand: 'Hyundai', model: 'Tucson', car_category: car_category_objects[1] },
-  { licence_plate: 'VWX567', brand: 'Kia', model: 'Sorento', car_category: car_category_objects[2] },
-  { licence_plate: 'YZA890', brand: 'Porsche', model: '911', car_category: car_category_objects[1] },
-  { licence_plate: 'BCD123', brand: 'Mazda', model: 'CX-5', car_category: car_category_objects[2] },
-  { licence_plate: 'EFG456', brand: 'Lexus', model: 'RX', car_category: car_category_objects[1] },
-  { licence_plate: 'HIJ789', brand: 'Volkswagen', model: 'Golf', car_category: car_category_objects[0] },
-  { licence_plate: 'KLM012', brand: 'Subaru', model: 'Forester', car_category: car_category_objects[2] },
-  { licence_plate: 'NOP345', brand: 'Jaguar', model: 'F-Type', car_category: car_category_objects[3] },
+  { licence_plate: 'ABC123', brand: 'Fiat', model: '500', car_category: car_category_objects[0] },
+  { licence_plate: 'XYZ789', brand: 'Fiat', model: '500', car_category: car_category_objects[0] },
+  { licence_plate: 'LMN456', brand: 'Fiat', model: '500', car_category: car_category_objects[0] },
+  { licence_plate: 'QRS234', brand: 'Fiat', model: '500', car_category: car_category_objects[0] },
+  { licence_plate: 'UVW567', brand: 'Fiat', model: '500', car_category: car_category_objects[0] },
+  { licence_plate: 'DEF890', brand: 'Fiat', model: '500', car_category: car_category_objects[0] },
+  { licence_plate: 'GHI012', brand: 'Fiat', model: '500', car_category: car_category_objects[0] },
+  { licence_plate: 'JKL345', brand: 'Porsche', model: '718 Boxter', car_category: car_category_objects[1] },
+  { licence_plate: 'MNO678', brand: 'Porsche', model: '718 Boxter', car_category: car_category_objects[1] },
+  { licence_plate: 'PQR901', brand: 'Porsche', model: '718 Boxter', car_category: car_category_objects[1] },
+  { licence_plate: 'STU234', brand: 'Porsche', model: '718 Boxter', car_category: car_category_objects[1] },
+  { licence_plate: 'VWX567', brand: 'BMW', model: 'X5', car_category: car_category_objects[2] },
+  { licence_plate: 'YZA890', brand: 'Porsche', model: '718 Boxter', car_category: car_category_objects[1] },
+  { licence_plate: 'BCD123', brand: 'BMW', model: 'X5', car_category: car_category_objects[2] },
+  { licence_plate: 'EFG456', brand: 'Porsche', model: '718 Boxter', car_category: car_category_objects[1] },
+  { licence_plate: 'HIJ789', brand: 'Fiat', model: '500', car_category: car_category_objects[0] },
+  { licence_plate: 'KLM012', brand: 'BMW', model: 'X5', car_category: car_category_objects[2] },
+  { licence_plate: 'NOP345', brand: 'BMW', model: 'Série 4 Cabriolet', car_category: car_category_objects[3] },
   { licence_plate: 'QRS678', brand: 'BMW', model: 'X5', car_category: car_category_objects[2] },
-  { licence_plate: 'TUV901', brand: 'Tesla', model: 'Model 3', car_category: car_category_objects[4] }
+  { licence_plate: 'TUV901', brand: 'Peugeot', model: 'E-3008', car_category: car_category_objects[4] }
 ]
 
 car_objects = cars.map { |car| Car.create!(car) }
