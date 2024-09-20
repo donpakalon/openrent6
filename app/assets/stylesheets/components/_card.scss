@@ -24,12 +24,16 @@
   background-repeat: no-repeat;
   background-position: center;
   height: 250px;
-  background-size: 350px;
+  background-size: 290px;
 }
 
 .card-category img {
   width: 100%;
   border-radius: 10px;
+}
+
+.card-category h2 {
+  margin-bottom: 0px;
 }
 
 .price {
@@ -54,4 +58,8 @@
   color: white;
   font-size: 20px;
   opacity: 85%;
+}
+
+.cat-desc {
+  font-size: 12px;
 }
